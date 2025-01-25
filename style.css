@@ -63,7 +63,7 @@ body {
     transition: color 0.3s ease;
 }
 
-/* Links Section */
+/* Description Section */
 .two {
     display: flex;
     flex-direction: column;
@@ -72,35 +72,6 @@ body {
     max-width: 400px;
 }
 
-.two a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    text-decoration: none;
-    background-color: var(--link-bg);
-    color: var(--text-color);
-    padding: 15px;
-    border: 2px solid var(--border-color);
-    border-radius: 8px;
-    font-size: 18px;
-    font-weight: bold;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
-.two a:hover {
-    background-color: var(--border-color);
-    color: var(--bg-color);
-    transform: translateY(-2px);
-}
-
-.two img {
-    width: 1.2 rem;
-    height: 1.2 rem;
-    filter: invert(var(--icon-invert));
-    transition: filter 0.3s ease;
-}
 
 /* Social Icons Section */
 .three {
