@@ -1,47 +1,73 @@
-/* Root Variables for Light Theme */
+/* Root Variables for Light and Dark Themes */
 :root {
     --bg-color: #ffffff;
     --text-color: #000000;
     --link-bg: #f0f0f0;
     --border-color: #dcdcdc;
     --icon-invert: 0;
-    --dots-color:rgba(0, 0, 0, 0.2);
+    --dots-color: rgba(0, 0, 0, 0.2);
 }
 
-/* Dark Theme Variables */
 [data-theme="dark"] {
     --bg-color: #121212;
     --text-color: #ffffff;
     --link-bg: #1e1e1e;
     --border-color: #333333;
     --icon-invert: 1;
-    --dots-color:rgba(255, 255, 255, 0.2);
-
+    --dots-color: rgba(255, 255, 255, 0.2);
 }
 
-/* General Body Styles */
-/* Combined body styles */
+/* General body styling and theme transitions */
 body {
     margin: 0;
     padding: 0;
-    background-color: var(--bg-color); /* Uses theme variable */
-    background-image: radial-gradient(circle, var(--dots-color) 5%, transparent 10%); /* Dotted background */
-    background-size: 13px 13px; /* Controls dot spacing */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--bg-color);
+    background-image: radial-gradient(circle, var(--dots-color) 5%, transparent 10%);
+    background-size: 13px 13px;
     color: var(--text-color);
-    font-family: 'Arial', sans-serif;
     transition: background-color 0.3s ease, color 0.3s ease;
-  }
+    overflow: hidden;
+}
 
-/* Frame Styling */
-.frame {
+/* Main container layout */
+.container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.left {
+    height: 100vh;
+    width: 35%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    position: sticky;
+    top: 0;
 }
 
-/* Profile Section */
+.right {
+    width: 65%;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.right::-webkit-scrollbar {
+    width: 8px;
+}
+
+.right::-webkit-scrollbar-thumb {
+    background-color: var(--text-color);
+    border-radius: 4px;
+}
+
+.right::-webkit-scrollbar-track {
+    background-color: var(--bg-color);
+}
+
+/* Profile section styling */
 .one {
     text-align: center;
     margin-bottom: 40px;
@@ -57,23 +83,26 @@ body {
 }
 
 .one .name {
-    font-size: 1.2rem;
+    font-family: "EB Garamond", serif;
+    font-size: 2.3rem;
     font-weight: bold;
     color: var(--text-color);
     transition: color 0.3s ease;
 }
 
-/* Description Section */
+/* Description section with flex layout */
 .two {
+    font-size: 1.5rem;
     display: flex;
     flex-direction: column;
     gap: 15px;
     width: 100%;
     max-width: 400px;
 }
-
-
-/* Social Icons Section */
+.two p {
+    padding : 20px;
+}
+/* Social icons section with hover effects */
 .three {
     display: flex;
     gap: 20px;
@@ -81,8 +110,8 @@ body {
 }
 
 .three a img {
-    width: 24px;
-    height: 24px;
+    width: 35px;
+    height: 35px;
     filter: invert(var(--icon-invert));
     transition: transform 0.3s ease, filter 0.3s ease;
 }
@@ -91,7 +120,7 @@ body {
     transform: scale(1.1);
 }
 
-/* Theme Toggle Button */
+/* Theme toggle button for switching themes */
 .theme-toggle {
     position: fixed;
     top: 20px;
@@ -132,20 +161,75 @@ body {
     display: block;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .two a {
-        font-size: 16px;
-        padding: 12px;
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+        overflow-y: auto;
     }
 
+    .left {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .two {
+
+        max-width: 500px;    }
+    .right {
+        width: 90%;
+        padding: 20px 40px 40px 55px;
+
+        height: auto;
+    }
+
+    body {
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 768px) {
     .one img {
-        width: 100px;
-        height: 100px;
+        width: 70px;
+        height: 70px;
+    }
+
+    .three {
+        gap: 15px;
     }
 
     .three a img {
         width: 32px;
         height: 32px;
+    }
+
+    .two {
+        font-size: 1.2rem;
+  }
+
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    .two {
+        font-size: 1rem;
+    }
+
+    .three {
+        gap: 10px;
+    }
+
+    .one .name {
+        font-size: 1.8rem;
     }
 }
