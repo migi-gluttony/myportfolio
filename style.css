@@ -122,9 +122,10 @@ body {
 
 /* Theme toggle button for switching themes */
 .theme-toggle {
-    position: fixed;
+    position: fixed; /* Keep it fixed to the viewport */
     top: 20px;
-    right: 20px;
+    right: 20px; /* Move to the left for small screens */
+    z-index: 9999; /* Ensure it's above other elements */
     width: 50px;
     height: 50px;
     border: none;
@@ -139,6 +140,7 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
+
 
 .theme-toggle:hover {
     background-color: var(--border-color);
@@ -179,10 +181,12 @@ body {
 
         max-width: 500px;    }
     .right {
-        width: 90%;
-        padding: 20px 40px 40px 55px;
+        width: 100%;
+        padding: 20px 40px 40px 40px;
 
         height: auto;
+        box-sizing: border-box;
+
     }
 
     body {
